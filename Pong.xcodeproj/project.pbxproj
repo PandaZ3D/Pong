@@ -17,6 +17,7 @@
 		CCC221591F47D8730002DB4F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CCC221571F47D8730002DB4F /* LaunchScreen.storyboard */; };
 		CCC221641F47D8730002DB4F /* PongTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCC221631F47D8730002DB4F /* PongTests.swift */; };
 		CCC2216F1F47D8730002DB4F /* PongUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCC2216E1F47D8730002DB4F /* PongUITests.swift */; };
+		CCC2217D1F4814520002DB4F /* LLPIXEL3.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CCC2217C1F4814520002DB4F /* LLPIXEL3.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		CCC2216A1F47D8730002DB4F /* PongUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PongUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCC2216E1F47D8730002DB4F /* PongUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PongUITests.swift; sourceTree = "<group>"; };
 		CCC221701F47D8730002DB4F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CCC2217C1F4814520002DB4F /* LLPIXEL3.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = LLPIXEL3.ttf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +105,7 @@
 		CCC221471F47D8730002DB4F /* Pong */ = {
 			isa = PBXGroup;
 			children = (
+				CCC2217C1F4814520002DB4F /* LLPIXEL3.ttf */,
 				CCC221481F47D8730002DB4F /* AppDelegate.swift */,
 				CCC2214A1F47D8730002DB4F /* GameScene.sks */,
 				CCC2214C1F47D8730002DB4F /* Actions.sks */,
@@ -242,6 +245,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CCC221541F47D8730002DB4F /* Main.storyboard in Resources */,
+				CCC2217D1F4814520002DB4F /* LLPIXEL3.ttf in Resources */,
 				CCC2214B1F47D8730002DB4F /* GameScene.sks in Resources */,
 				CCC221561F47D8730002DB4F /* Assets.xcassets in Resources */,
 				CCC221591F47D8730002DB4F /* LaunchScreen.storyboard in Resources */,
@@ -519,6 +523,7 @@
 				CCC221751F47D8730002DB4F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		CCC221761F47D8730002DB4F /* Build configuration list for PBXNativeTarget "PongTests" */ = {
 			isa = XCConfigurationList;
@@ -527,6 +532,7 @@
 				CCC221781F47D8730002DB4F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		CCC221791F47D8730002DB4F /* Build configuration list for PBXNativeTarget "PongUITests" */ = {
 			isa = XCConfigurationList;
@@ -535,6 +541,7 @@
 				CCC2217B1F47D8730002DB4F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

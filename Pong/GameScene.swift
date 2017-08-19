@@ -17,6 +17,9 @@ class GameScene: SKScene {
     
     var score = [Int]()
     
+    var btmLbl = SKLabelNode()
+    var topLbl = SKLabelNode()
+    
     override func didMove(to view: SKView) {
         
         startGame()
@@ -24,6 +27,9 @@ class GameScene: SKScene {
         ball = self.childNode(withName: "ball") as! SKSpriteNode
         bot = self.childNode(withName: "bot") as! SKSpriteNode
         usr = self.childNode(withName: "usr") as! SKSpriteNode
+        
+        btmLbl = self.childNode(withName: "BottomScore") as! SKLabelNode
+        topLbl = self.childNode(withName: "TopScore") as! SKLabelNode
         
         ball.physicsBody?.applyImpulse(CGVector(dx: 12, dy: 12))
         
@@ -36,16 +42,23 @@ class GameScene: SKScene {
        
     }
     
+//    func displayScore() {
+//        topLbl.text = "\(score[0])"
+//        btmLbl.text = "\(score[1])"
+//    }
+    
     func startGame() {
         //init scores
         score = [0,0]
+//        displayScore()
+//        topLbl.text = "\(score[0])"
+//        btmLbl.text = "\(score[1])"
     }
     
     func addScore(player: SKSpriteNode) {
         //remove forces on ball
         ball.position = CGPoint(x: 0, y: 0)
-        ball.physicsBody?.applyImpulse(CGVector(dx: 0, dy: 0))
-        
+        ball.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
         //increment scores
         if player == usr {
             //increment usr score
@@ -57,10 +70,12 @@ class GameScene: SKScene {
             //imcrement score for bot
             score[1] += 1
             //add impulse
-            ball.physicsBody?.applyImpulse(CGVector(dx: -12, dy: 12))
+            ball.physicsBody?.applyImpulse(CGVector(dx: -12, dy: -12))
         }
         
-        print(score)
+        //displayScore()
+//        topLbl.text = "\(score[0])"
+//        btmLbl.text = "\(score[1])"
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
