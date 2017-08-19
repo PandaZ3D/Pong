@@ -21,7 +21,7 @@ class GameScene: SKScene {
         bot = self.childNode(withName: "bot") as! SKSpriteNode
         usr = self.childNode(withName: "usr") as! SKSpriteNode
         
-        ball.physicsBody?.applyImpulse(CGVector(dx: -20, dy: 20))
+        ball.physicsBody?.applyImpulse(CGVector(dx: -12, dy: 12))
         
         let border = SKPhysicsBody(edgeLoopFrom: self.frame)
         
@@ -32,7 +32,27 @@ class GameScene: SKScene {
        
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        for touch in touches {
+            let location = touch.location(in: self)
+            
+            usr.run(SKAction.moveTo(x: location.x, duration: 0.2))
+            
+        }
+    }
+    
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        for touch in touches {
+            let location = touch.location(in: self)
+            
+            usr.run(SKAction.moveTo(x: location.x, duration: 0.2))
+            
+        }
+    }
+    
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered
+        
+        bot.run(SKAction.moveTo(x: ball.position.x, duration: 1))
     }
 }
