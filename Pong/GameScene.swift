@@ -15,6 +15,8 @@ class GameScene: SKScene {
     var bot = SKSpriteNode()
     var usr = SKSpriteNode()
     
+    var score = [Int]()
+    
     override func didMove(to view: SKView) {
         
         ball = self.childNode(withName: "ball") as! SKSpriteNode
@@ -30,6 +32,10 @@ class GameScene: SKScene {
         
         self.physicsBody = border
        
+    }
+    
+    func startGame() {
+        score = [0,0]
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
