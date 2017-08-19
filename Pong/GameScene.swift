@@ -33,6 +33,9 @@ class GameScene: SKScene {
         
         ball.physicsBody?.applyImpulse(CGVector(dx: 12, dy: 12))
         
+        bot.position.y = (self.frame.height/2) - 50
+        usr.position.y = (-self.frame.height/2) + 50
+        
         let border = SKPhysicsBody(edgeLoopFrom: self.frame)
         
         border.friction = 0
@@ -42,17 +45,16 @@ class GameScene: SKScene {
        
     }
     
-//    func displayScore() {
-//        topLbl.text = "\(score[0])"
-//        btmLbl.text = "\(score[1])"
-//    }
+    func displayScore() {
+        btmLbl.text = String(score[0])
+        topLbl.text = String(score[1])
+    }
     
     func startGame() {
         //init scores
         score = [0,0]
-//        displayScore()
-//        topLbl.text = "\(score[0])"
-//        btmLbl.text = "\(score[1])"
+        
+        displayScore()
     }
     
     func addScore(player: SKSpriteNode) {
@@ -73,9 +75,7 @@ class GameScene: SKScene {
             ball.physicsBody?.applyImpulse(CGVector(dx: -12, dy: -12))
         }
         
-        //displayScore()
-//        topLbl.text = "\(score[0])"
-//        btmLbl.text = "\(score[1])"
+        displayScore()
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -103,12 +103,12 @@ class GameScene: SKScene {
         
         bot.run(SKAction.moveTo(x: ball.position.x, duration: 1))
         
-        if ball.position.y <= usr.position.y - 70 {
+        if ball.position.y <= usr.position.y - 30 {
             //usr position lower half (-)
             //add score to AI
             addScore(player: bot)
         }
-        else if ball.position.y >= bot.position.y + 70 {
+        else if ball.position.y >= bot.position.y + 30 {
             //bot position upper half (+)
             //add score to usr
             addScore(player: usr)
