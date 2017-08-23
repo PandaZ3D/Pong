@@ -10,6 +10,8 @@ import UIKit
 import SpriteKit
 import GameplayKit
 
+var currentGameType = gameMode.medium
+
 class GameViewController: UIViewController {
 
     override func viewDidLoad() {

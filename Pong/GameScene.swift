@@ -22,16 +22,12 @@ class GameScene: SKScene {
     
     override func didMove(to view: SKView) {
         
-        startGame()
-        
         ball = self.childNode(withName: "ball") as! SKSpriteNode
         bot = self.childNode(withName: "bot") as! SKSpriteNode
         usr = self.childNode(withName: "usr") as! SKSpriteNode
         
         btmLbl = self.childNode(withName: "BottomScore") as! SKLabelNode
         topLbl = self.childNode(withName: "TopScore") as! SKLabelNode
-        
-        ball.physicsBody?.applyImpulse(CGVector(dx: 12, dy: 12))
         
         bot.position.y = (self.frame.height/2) - 50
         usr.position.y = (-self.frame.height/2) + 50
@@ -42,6 +38,8 @@ class GameScene: SKScene {
         border.restitution = 1
         
         self.physicsBody = border
+        
+        startGame()
        
     }
     
@@ -53,8 +51,9 @@ class GameScene: SKScene {
     func startGame() {
         //init scores
         score = [0,0]
-        
         displayScore()
+        ball.physicsBody?.applyImpulse(CGVector(dx: 12, dy: 12))
+
     }
     
     func addScore(player: SKSpriteNode) {
@@ -82,9 +81,21 @@ class GameScene: SKScene {
         //every touch happening cont.
         for touch in touches {
             let location = touch.location(in: self)
-            //track UI touch
-            usr.run(SKAction.moveTo(x: location.x, duration: 0.2))
-            
+            if currentGameType == .p2 {
+                if location.y > 0 {
+                    //move bot paddle along with UI touch
+                    bot.run(SKAction.moveTo(x: location.x, duration: 0.2))
+                }
+                if location.y < 0 {
+                    //move usr paddle along with UI touch
+                    usr.run(SKAction.moveTo(x: location.x, duration: 0.2))
+                }
+            }
+            else {
+                //move usr paddle along with UI touch
+                usr.run(SKAction.moveTo(x: location.x, duration: 0.2))
+                
+            }
         }
     }
     
@@ -92,16 +103,41 @@ class GameScene: SKScene {
         //every touch happening cont.
         for touch in touches {
             let location = touch.location(in: self)
-            //move usr paddle along with UI touch
-            usr.run(SKAction.moveTo(x: location.x, duration: 0.2))
             
+            if currentGameType == .p2 {
+                if location.y > 0 {
+                    //move bot paddle along with UI touch
+                    bot.run(SKAction.moveTo(x: location.x, duration: 0.2))
+                }
+                if location.y < 0 {
+                    //move usr paddle along with UI touch
+                    usr.run(SKAction.moveTo(x: location.x, duration: 0.2))
+                }
+            }
+            else {
+                //move usr paddle along with UI touch
+                usr.run(SKAction.moveTo(x: location.x, duration: 0.2))
+
+            }
         }
     }
     
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered
         
-        bot.run(SKAction.moveTo(x: ball.position.x, duration: 1))
+        switch currentGameType {
+        case .easy:
+            bot.run(SKAction.moveTo(x: ball.position.x, duration: 1))
+            break
+        case .medium:
+            bot.run(SKAction.moveTo(x: ball.position.x, duration: 1))
+            break
+        case .hard:
+            bot.run(SKAction.moveTo(x: ball.position.x, duration: 1))
+            break
+        case .p2:
+            break
+        }
         
         if ball.position.y <= usr.position.y - 30 {
             //usr position lower half (-)
